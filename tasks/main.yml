@@ -1,0 +1,4 @@
+---
+- import_tasks: chrony.yml
+  when: chrony_enabled
+  tags: [chrony]

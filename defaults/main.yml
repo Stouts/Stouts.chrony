@@ -1,0 +1,3 @@
+---
+chrony_enabled: true
+chrony_timesyncd_remove: true

@@ -1,0 +1,22 @@
+---
+- name: Check if timesyncd service exists
+  ansible.builtin.systemd:
+    name: systemd-timesyncd
+  register: timesyncd_status
+  failed_when: false
+  changed_when: false
+  when: chrony_timesyncd_remove
+
+- import_tasks: clean.yml
+  when: chrony_timesyncd_remove and timesyncd_status.status is defined
+
+- name: Install chrony
+  ansible.builtin.apt:
+    name: chrony
+    state: present
+
+- name: Ensure chrony running
+  ansible.builtin.systemd:
+    name: chrony
+    state: started
+    enabled: yes
