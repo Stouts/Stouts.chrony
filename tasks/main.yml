@@ -1,4 +1,4 @@
 ---
-- import_tasks: chrony.yml
+- ansible.builtin.import_tasks: chrony.yml
   when: chrony_enabled
   tags: [chrony]

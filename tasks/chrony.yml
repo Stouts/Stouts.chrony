@@ -7,7 +7,7 @@
   changed_when: false
   when: chrony_timesyncd_remove
 
-- import_tasks: clean.yml
+- ansible.builtin.import_tasks: clean.yml
   when: chrony_timesyncd_remove and timesyncd_status.status is defined
 
 - name: Install chrony
@@ -19,4 +19,4 @@
   ansible.builtin.systemd:
     name: chrony
     state: started
-    enabled: yes
+    enabled: true

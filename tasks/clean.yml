@@ -3,13 +3,13 @@
   ansible.builtin.systemd:
     name: systemd-timesyncd
     state: stopped
-    enabled: no
-    masked: yes
-  when: ansible_service_mgr == 'systemd'
+    enabled: false
+    masked: true
+  when: ansible_facts['service_mgr'] == 'systemd'
 
 - name: Remove timesyncd
   ansible.builtin.apt:
     name: systemd-timesyncd
     state: absent
-    purge: yes
-    update_cache: yes
+    purge: true
+    update_cache: true

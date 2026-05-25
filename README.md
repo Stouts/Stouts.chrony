@@ -5,8 +5,8 @@ Ansible role to install and configure Chrony NTP client/server
 #### Variables
 
 ```yaml
-chrony_enabled: yes # Enable/Disable role
-chrony_timesyncd_remove: yes # Remove systemd-timesyncd if present
+chrony_enabled: true # Enable/Disable role
+chrony_timesyncd_remove: true # Remove systemd-timesyncd if present
 ```
 
 #### Usage
