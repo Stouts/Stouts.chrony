@@ -8,7 +8,8 @@
   when: chrony_timesyncd_remove
 
 - ansible.builtin.import_tasks: clean.yml
-  when: chrony_timesyncd_remove and timesyncd_status.status is defined
+  # systemd module returns status={} when the unit is missing, so status is always defined
+  when: chrony_timesyncd_remove and (timesyncd_status.status.LoadState | default('not-found')) != 'not-found'
 
 - name: Install chrony
   ansible.builtin.apt:
